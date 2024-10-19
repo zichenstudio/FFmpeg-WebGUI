@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>FFmpeg WebGUI</title>
+    <link rel="icon" href="favicon.ico">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h2>FFmpeg WebGUI</h2>
+    <p>输出: <code></code></p>
+    <p>文件名: <input type="text" id="inputFileName" placeholder="请输入被转换文件名"></p>
+    <p>输出文件名: <input type="text" id="outputFileName" value="output"></p>
+    <p>文件名重复覆盖: <input type="checkbox" id="overwrite"></p>
+    <p>速度: <input type="text" id="speed" placeholder="0.5-100.0"></p><!-- atempo -->
+    <h3>视频: </h3>
+    <p>视频编码: 
+    <select id="videoCodec">
+      <option value="copy">原视频编码</option>
+      <option value="flv">FLV</option>
+      <option value="gif">GIF</option>
+      <option value="libx264">H.264</option>
+      <option value="libx265">H.265</option>
+      <option value="mpeg2video">MPEG-2 video</option>
+      <option value="libaom-av1">AV1</option>
+      <option value="libvpx">VP8</option>
+      <option value="libvpx-vp9">VP9</option>
+    </select></p>
+    <p>分辨率: 宽 <input type="text" id="videoWidth" placeholder="宽度"> 高 <input type="text" id="videoHeight" placeholder="高度"></p>
+    <p>逆时针旋转: 
+    <select id="rotation">
+      <option value="0">无旋转</option>
+      <option value="90">90</option>
+      <option value="180">180</option>
+      <option value="270">270</option>
+    </select>
+    </p>
+    <p>水平翻转: <input type="checkbox" id="flipHorizontal"></p>
+    <p>竖直翻转: <input type="checkbox" id="flipVertical"></p>
+    <p>恒定比特率 (CRF): <input type="text" id="crf" placeholder="0-51"></p>
+    <p>编码预设: 
+    <select id="preset">
+      <option value="null">无</option>
+      <option value="ultrafast">ultrafast</option>
+      <option value="superfast">superfast</option>
+      <option value="veryfast">veryfast</option>
+      <option value="faster">faster</option>
+      <option value="fast">fast</option>
+      <option value="medium">medium</option>
+      <option value="slow">slow</option>
+      <option value="veryslow">veryslow</option>
+    </select>
+    </p>
+
+    <h3>音频: </h3>
+    <p>音频编码: 
+    <select id="audioCodec">
+      <option value="copy">原视频编码</option>
+      <option value="aac">AAC (Advanced Audio Coding)</option>
+      <option value="alac">ALAC (Apple Lossless Audio Codec)</option>
+      <option value="flac">FLAC (Free Lossless Audio Codec)</option>
+      <option value="libmp3lame">libmp3lame MP3 (MPEG audio layer 3) (codec mp3)</option>
+      <option value="libvorbis">OGG Vorbis/libvorbis (codec vorbis)</option>
+      <option value="pcm_f32le">WAV/PCM signed 32-bit little-endian</option>
+    </select>
+    </p>
+    <p>采样率: 
+    <select id="sampleRate">
+      <option value="44100">44100</option>
+      <option value="48000">48000</option>
+      <option value="96000">96000</option>
+      <option value="192000">192000</option>
+    </select>
+
+    </p>
+
+    <button onclick="generateCommand()">生成命令</button>
+  </body>
+</html>
